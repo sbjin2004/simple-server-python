@@ -1,17 +1,17 @@
 import picamera
-from flask import Flask, render_template
+from flask import Flask, render_template    
 
 app = Flask(__name__)
 app._static_folder = "home/pi"
 
 @app.route("/pictures")
-def hello()
+def hello():
     with picamera.PiCamera() as camera:
     camera.capture('image.jpg')
     return app.send_static_file('image.jpg')
 
 @app.route("/interface")
-def interface_display(n):
+def interface_display():
 	return render_template("interface.html")
 
 #app = Flask(__name__)
